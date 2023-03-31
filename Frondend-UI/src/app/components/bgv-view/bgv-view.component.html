@@ -1,0 +1,211 @@
+<app-navbar>
+<div class="md:w-full sm:w-full md:pl-40 md:pr-40 md:pb-6">
+<div class="overflow-hidden shadow max-w-full my-3">
+  <div class="w-full h-20 header text-black mx-auto my-auto"></div>
+  <div class="flex justify-center -mt-8">
+      <img src="../../../assets/images/logo1.png" width="65" height="65" class="rounded-full border-solid border-white border-1 -mt-3">		
+  </div>
+  <div class="flex justify-end pr-5 font-bold">{{myDate | date}}</div>
+<div class="text-center px-3 pb-1">
+  <h1 class="text-black text-sm bold font-sans">{{FirstName}} {{lastName}}</h1>
+  <p>Total Exp    - <b>{{y}} Years {{m1}} Months</b></p>
+  <!-- <span class="text-black text-sm bold font-sans">M.Tech</span><br>
+  <span class="text-black text-sm bold font-sans">19 years 3 months</span> -->
+</div>
+<div class="flex justify-center pb-3 text-grey-dark">
+  <div class="text-center mr-3 border-r pr-3">
+    <p class=" font-sans font-light text-black">Email ID - {{email}}</p>
+  <p class=" font-sans font-light text-grey-dark">Phone Number - <span class="text-black">{{phone}}</span></p>
+  </div>
+  <div class="text-center">
+    <p class=" font-sans font-light text-grey-dark" *ngIf="aadhar">Aadhaar Card Number - {{aadhar}}</p>
+    <p class=" font-sans font-light text-grey-dark" *ngIf="pan_card">Pan Card Number - {{pan_card}}</p>
+
+  </div>
+</div>
+</div>
+<!--highlights-->
+
+<!-- <div class="overflow-hidden shadow max-w-full my-3">
+  <div class="text-left px-20 pb-6 pt-2">
+    <h1 class="text-black text-sm bold font-sans">Highlights</h1>
+    <div class="flex justify-start pb-3 text-grey-dark">
+      <div class="justify-start mr-3 border-r pr-3">
+        <h3>Awards</h3>
+        <div *ngFor="let list of data">
+            <li *ngIf="list.awards">awards</li>
+        </div>
+      </div>
+      <div class="text-center">
+        <h3>Issues</h3>
+          <p *ngIf="data.communicationSkills">hello</p>
+      </div>
+      <hr>
+   </div>
+  </div>
+</div> -->
+
+<!--org-->
+<div class="overflow-hidden shadow max-w-full my-3">
+  <div class="text-left px-20 pb-6 pt-2">
+    <h1 class="text-black text-sm bold font-sans">Experience</h1>
+    <div class="md:flex md:flex-nowrap justify-start pb-3 text-grey-dark" *ngFor="let list of data">
+      <div class="text-center mr-3 border-r pr-3 logo" *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+        <div *ngFor="let list1 of data1">
+          <img *ngIf="list.organisationId === list1._id" src="{{orgLogo + list1.organisationLogo }}">
+        </div>  
+      </div>
+      <div class="justify-start pl-10" *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+        <h2>{{list.organizationName}}</h2>
+        <h4>{{list.role}}</h4>
+        <span>{{list.dateOfJoining | date: 'MM yyyy'}} - {{list.exitDate | date: 'MM yyyy'}}</span><br>
+        <h4>Professional Experience - {{list.professionalExperience}}</h4>
+        <h4>{{list.address}}</h4>
+      </div>
+
+      <div class=" pl-10" *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+        <button class="px-2 lg-button focus:outline-none focus:shadow-outline"  (click)="openDialog(list._id)">Work Ethic</button>
+        <button class="px-2 lg-button focus:outline-none focus:shadow-outline"  (click)="openMeritDialog(list._id)">Merit-Quality</button>
+        <button class="px-2 lg-button focus:outline-none focus:shadow-outline"  (click)="openRecognitionDialog(list._id)">Recognition</button>
+        <button class="px-2 lg-button focus:outline-none focus:shadow-outline"  (click)="openLeadershipDialog(list._id)">Leadership</button>
+        <button class="px-2 lg-button focus:outline-none focus:shadow-outline"  (click)="openIssuesDialog(list._id)">Issues</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--about-->
+<div class="overflow-hidden shadow max-w-full my-3">
+  <div class="text-left px-20 pb-6 pt-2">
+    <h1 class="text-black text-sm bold font-sans">Education</h1>
+    <div class="md:flex justify-start pb-3 text-grey-dark" *ngFor="let list of data">
+      <div class="text-center mr-3 border-r pr-5" *ngIf="list.instituteId != '' && list.instituteId != undefined ">
+        <div *ngFor="let list1 of data1">
+          <img class="logo1" *ngIf="list.instituteId === list1._id" src="{{instLogo + list1.instituteLogo}}">
+        </div>
+      </div>
+      <div class="justify-start pl-10" *ngIf="list.instituteId != '' && list.instituteId != undefined ">
+        <h2>{{list.intitutionName}}</h2>
+        <span>{{list.yearOfJoining }} - {{list.yearOfPassout}}</span><br>
+        <span>{{list.nameOfCourse}}</span><br>
+        <h4>{{list.studentType}} Student</h4>
+        <span>{{list.address}}</span>
+      </div>
+      <hr>
+  </div>
+  </div>
+</div>
+
+<!--Documents-->
+
+<div class="overflow-hidden shadow max-w-full my-3 ">
+  <h1 class="text-black text-sm bold font-sans text-left px-20">Documents</h1>
+  <!-- <h3 class="text-black text-sm bold font-sans text-left px-20 underline">Organization Document</h3> -->
+  <!-- <div class="scroll text-left px-5 pb-6 pt-2 flex ...">
+      <div class="md:flex-1 ... mr-3 border-r pr-2 ">
+        <h5>Awards Document</h5>
+          <div *ngFor="let list of data">
+            <span class="justify-start" *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+               
+                <li *ngIf="list.awards.originalFilename"><a
+                  (click)="downloadDoc(list.awards.documentUpload)">{{list.awards.originalFilename}}</a></li>
+            </span>
+          </div>
+      </div>
+      <div class="md:flex-1 ... mr-3 border-r pr-2">
+        <h5>Discrepancy Document</h5>
+        <div *ngFor="let list of data">
+          <span class="justify-start" *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+             
+              <li *ngIf="list.discrepancyDocuments.originalFilename || list.discrepancyDocuments.originalFilename != '' "><a
+                (click)="downloadDoc(list.discrepancyDocuments.descrepencyUploadDocument)">{{list.discrepancyDocuments.originalFilename}}</a></li>
+          </span>
+        </div>
+      </div>
+      <div class="md:flex-1 ... mr-3 border-r pr-2">
+        <h5>Compliance Document</h5>
+        <div *ngFor="let list of data">
+          <span class="justify-start" *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+             
+              <li *ngIf="list.compliencyDiscrepancy.originalFilename && list.compliencyDiscrepancy.originalFilename != '' "><a
+                (click)="downloadDoc(list.compliencyDiscrepancy.compliencyUploadDocument)">{{list.compliencyDiscrepancy.originalFilename}}</a></li>
+          </span>
+        </div>
+      </div>
+      <div class="md:flex-1 ... mr-3 border-r pr-2">
+        <h5>Warning Document</h5>
+        <div *ngFor="let list of data">
+          <span class="justify-start" *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+        
+              <li *ngIf="list.warning.originalFilename || list.warning.originalFilename != '' "><a
+                (click)="downloadDoc(list.warning.warningUploadDocument)">{{list.warning.originalFilename}}</a></li>
+          </span>
+        </div>
+      </div>
+      <div class="md:flex-1 ... mr-3 border-r pr-2">
+        <h5>Show cause Document</h5>
+        <div *ngFor="let list of data">
+          <span class="justify-start" *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+          
+              <li *ngIf="list.showCausedIssue.originalFilename || list.showCausedIssue.originalFilename != '' "><a
+                (click)="downloadDoc(list.showCausedIssue.showCausedUploadDocument)">{{list.showCausedIssue.originalFilename}}</a></li>
+          </span>
+        </div>
+      </div>
+      <div class="md:flex-1 ... mr-3 border-r pr-2">
+        <h5>PIP Document</h5>
+        <div *ngFor="let list of data">
+          <span class="justify-start" *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+              
+              <li *ngIf="list.suspension.originalFilename || list.suspension.originalFilename != '' "><a
+                (click)="downloadDoc(list.suspension.suspensionUploadDocument)">{{list.suspension.originalFilename}}</a></li>
+          </span>
+        </div>
+      </div>
+      <div class="md:flex-1 ...">
+        <h5>Termination Document</h5> 
+        <div *ngFor="let list of data">
+          <span class="justify-start" *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+              
+              <li *ngIf="list.termination.originalFilename || list.termination.originalFilename != '' "><a
+                (click)="downloadDoc(list.termination.terminationUploadDocument)">{{list.termination.terminationUploadDocument}}</a></li>
+          </span>
+        </div>
+      </div>
+  </div> -->
+  <h3 class="text-black text-sm bold font-sans text-left px-20 underline">Institution Document</h3>
+  <div class="text-left px-5 pb-6 pt-2 flex ..." >
+    <div class="md:flex-1 ... mr-3 border-r pr-2 ">
+      <h5>Educational Document</h5>
+        <div *ngFor="let list of data">
+          <span class="justify-start" *ngIf="list.instituteId != '' && list.instituteId != undefined ">
+              <li *ngFor="let d of doc">
+                <a (click)="downloadstuDoc(d.docName)">{{d.docName}}</a>
+              </li>
+            
+          </span>
+        </div>
+    </div>
+    <div class="flex-1 ... mr-3 border-r pr-2">
+      <h5>Extra Activites Document</h5>
+      <div *ngFor="let list of data">
+        <span class="justify-start" *ngIf="list.instituteId != '' && list.instituteId != undefined ">
+            <li *ngIf="list.extraActivityDocumentName"><a
+              (click)="downloadstuDoc(list.extraActivityDocumentName)">{{list.extraActivityDocumentName}}</a></li>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<!--BUTTON-->
+<div class="mt-8 flex justify-center text-center">
+  <div class="inline-flex rounded-md bg-white shadow">
+    <button class="lg-button focus:outline-none focus:shadow-outline mr-12" type="button" (click)="downloadPDF()">
+      Download PDF
+    </button>
+  </div>
+</div>
+
+</app-navbar>

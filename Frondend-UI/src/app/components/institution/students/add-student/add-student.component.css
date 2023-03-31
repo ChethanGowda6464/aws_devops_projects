@@ -1,0 +1,35 @@
+.mat-radio-button {
+    margin-top: 40px !important;
+}
+.avatar-upload .avatar-edit input {
+    display: none;
+}
+.mat-form-field-infix{
+    padding: 0px !important;
+}
+input.mat-input-element {
+    margin-top: -1.0625em !important;
+}
+@media (min-width: 1024px){
+.input-w{
+    width: 350px !important;
+}
+}
+.image-text{
+    color: black !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    text-align: left;
+  }
+  .mat-tab-group {
+    position: sticky !important;
+  }
+/* .enrollment{
+    margin-top: -19px !important;
+    /* margin-top: 4px; */
+.landmark{
+    margin-top: -19px;
+}
+.state{
+    margin-top: -19px;
+}

@@ -1,0 +1,76 @@
+<app-navbar>
+<div class="p-8 min-h-screen flex items-center">
+    <div class="flex-1 max-w-5xl mx-auto">
+        <h1 class="hd-add">Settings</h1>
+       <div class="bg-white rounded-lg showdow pb-4">
+        <h1 class="sub-hd-size flex justify-center pt-4">Personal Information</h1>
+          <div class="flex margin-box border-2 border-gray-500">
+            <form  class="profile-form" [formGroup]="settingForm" >
+                <div class="flex flex-wrap sm:flex-wrap mt-8">
+                    <div class="w-1/2">
+                        <div class="group-gap">
+                            <button  (click)="avatar.click()">
+                               <div class="avatar-upload">
+                                <div class="avatar-edit">
+                                    <!-- <mat-label>Upload User Image</mat-label> -->
+                                    <input type='file' id="imageUpload" accept=".png, .jpeg,.jpg" #avatar (change)="uploadFile($event.target.files)" />
+                                </div>
+                                <div class="avatar-preview w-32 h-32 lg:ml-32 lg:mt-4 -ml-8 mt-2 border-2 border-transparent">
+                                    <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'" >
+                                        <mat-icon class="icon">camera_enhance</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="w-1/2">
+                        <mat-form-field class="sm:ml-10">
+                            <mat-label>About Me</mat-label>
+                            <textarea  matInput name="caddress" formControlName="aboutMe" class="br-about" rows="8" autoComplete='off'></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="flex flex-wrap mt-12">
+                    <div class="w-1/2">
+                        <mat-icon class="text-4xl ml-48 mt-6">settings_phone</mat-icon>
+                    </div>
+                    <div class="w-1/2">
+                        <mat-form-field class="ml-12">
+                            <mat-label>Phone Number</mat-label>
+                            <input  matInput   type="text"  name="contact" formControlName="phoneNumber"  class="br-btm input-w" autoComplete='off'>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                    <button class="lg-button focus:outline-none focus:shadow-outline mb-3" type="submit" (click)="save(id)">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="border-2 border-gray-500 margin-box">
+            <div class="flex flex-wrap m-2">
+                <div class="w-1/2">
+                    <mat-icon class="text-4xl ml-48 ">settings</mat-icon>
+                </div>
+                <div class="w-1/2">
+                    <h2 class="ml-12"><a [routerLink]="['/reset-password']">Reset Password</a></h2>
+                </div>
+            </div>
+        </div>
+        <div class="border-2 border-gray-500 margin-box ">
+            <div class="flex flex-wrap m-2">
+                <div class="w-1/2">
+                    <mat-icon class="text-4xl ml-48 ">vpn_key</mat-icon>
+                </div>
+                <div class="w-1/2">
+                    <h2><a [routerLink]="['/login']">Login & Security</a></h2>
+                    <p class="text-sm ml-10">Change your password and make sure your account is secure</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</app-navbar>

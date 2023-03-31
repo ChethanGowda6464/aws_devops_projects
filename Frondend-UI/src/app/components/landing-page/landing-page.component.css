@@ -1,0 +1,148 @@
+.mat-toolbar.mat-primary {
+  position: inherit !important;
+  top: 0;
+  z-index: 1;
+  color: #6cb43b;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+}
+.section-background1 {
+  background: white !important;
+}
+.word-highlight {
+  background-color: #6cb43b;
+  color: #fff;
+}
+
+.section-background {
+  /* background-color: #eeeeee; */
+  padding: 2rem;
+  margin: 0 2rem 2rem 2rem;
+  border-radius: 100px;
+}
+
+.text-color {
+  color: #6cb43b;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.pad {
+  padding-left: 35%;
+  padding-right: 35%;
+}
+
+.polygon {
+  background-image: url(./../../../assets/images/traphizim.svg);
+  background-size: cover;
+}
+
+.triangle {
+  background-image: url(../../../assets/images/triangles.svg);
+  background-size: cover;
+}
+
+.circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 4px solid #6cb43b;
+  font-size: 24px;
+  color: white;
+  line-height: 20px;
+  text-align: center;
+  background: #fff;
+  position: relative;
+  z-index: 1;
+  vertical-align: middle;
+  display: table-cell;
+}
+.circle:before {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  content: "";
+  background: #6cb43b;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.button {
+  border-radius: 23px;
+  color: #6cb43b;
+  border: 1px solid #6cb43b;
+  font-size: 14px;
+  padding: 5px;
+}
+@media(max-width:320px){
+  .button{
+    border-radius: 23px;
+    color: #6cb43b;
+    border: 1px solid #6cb43b;
+    font-size: 11px;
+    padding: 0px;
+  }
+  .text-xl{
+    font-size: 0.875rem !important;
+  }
+  .section-background {
+    padding: 1em;
+    margin: 0em ;
+    border-radius: 50px;
+  }
+  .hea-border{
+    margin-left: 2rem !important;
+  }
+  .text-xs{
+    font-size: 0.65rem;
+  }
+  .mat-toolbar-single-row {
+    padding: 1px !important;
+  }
+}
+/* .hea-border{
+  border-bottom: 9px solid #6cb43b;
+  outline:black solid 1px;
+  margin-left: 6.5rem;
+}
+.hea-border1{
+  border-bottom: 9px solid #6cb43b;
+  outline:black solid 1px;
+  margin-left: 3.9rem;
+} */
+.bg-gr{
+  /* background-color: #eeeeee; */
+  padding: 2em;
+  color: black;
+  border-radius: 25px;
+}
+.mt-5{
+  margin-top: 2rem;
+}
+.text-green{
+  color: 6cb43b;
+}
+.higher h1{
+  color: #6cb43b;
+}
+.lower h1{
+  color: #6cb43b;
+}
+.tool {
+  text-align: right;
+  display: inline-block;
+  width: 100%;
+  font-size: 1rem;
+  color: rgb(58, 58, 173);
+}
+.mat-toolbar-row {
+  height: 0% !important;
+}

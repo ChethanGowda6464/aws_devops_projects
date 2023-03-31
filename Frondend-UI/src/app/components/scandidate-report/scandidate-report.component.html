@@ -1,0 +1,163 @@
+<div class="border-dashed border-2 border-black w-11/12 m-auto mt-10" id="pdfTable" #pdfTable>
+<div class="grid grid-cols-3 gap-4 mt-8">
+  <div class="ml-16 w-1/2">
+    <img src="../../../assets/images/logo1.png" width="100" height="100" class="border-1 -mt-3">	
+  </div>
+  <div class="ml-32">
+    <span class="text-2xl heading">{{FirstName}} {{lastName}}</span><br>
+    <span class="text-lg">Phone Number - <span class="text-black">{{phone}}</span></span><br>
+    <span class="text-lg">Email ID - {{email}}</span>
+  </div>
+  <div class="ml-40">
+    <span>Report date:{{myDate | date}}</span><br><br>
+    
+  </div>
+</div>
+<hr>
+<div class="w-11/12 grid grid-cols-1">
+  <div class="ml-24"><br>
+    <span class="text-lg">Highlights (If any)</span><br>
+    <span class="text-lg">(Awards or Issues)</span><br><br>
+  </div>
+
+</div>
+
+<hr>
+
+
+<table style="width:95%;margin-left:27px;">
+  <caption style="padding-bottom: 10px;">Experience</caption>
+  <tr>
+    <th>LOGO</th>
+    <th>COMPANY NAME</th>
+    <th>WORK ETHIC</th>
+    <th>MERIT/QUALITY</th>
+    <th>RECOGNITION</th>
+    <th>LEADERSHIP</th>
+    <th>ISSUES</th>
+    <th width="10px">ANY ATTACHMENTS</th>
+  </tr>
+  <tr *ngFor="let list of data">
+     <td *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+      <span *ngFor="let list1 of data1"><img *ngIf="list.organisationId === list1._id" src="{{orgLogo + list1.organisationLogo }}" class="image"></span>
+     </td>
+     <td *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+      {{list.organizationName}}
+     </td>
+    <td *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+      Self Driven / Initiative:{{selfDriven}}<br>
+      Creativity: {{creativity}}<br>
+      Work independently:{{workIndependenty}}<br>
+      Teamwork:{{teamWork}}<br>
+      Ability to handle pressure: {{dealConstructivelyWithPressure}}<br>
+      Discipline:{{discipline}}<br>
+    </td>
+    <td *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+      Communication:{{communicationSkills}}<br>
+      Product understanding:{{productKnowledge}}<br>
+      Industry / domain knowledge:{{industryKnowledge}}<br>
+      Subject matter expertise:{{subMatter}}<br>
+      Key Skills: {{list.keySkills}}<br>
+      Re-hire?: {{list.rehireAgain}}
+    </td>
+    <td *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+      {{list.awards.IsSelect}}
+    </td>
+    <td *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+      Strategic thinking: {{stategicThinking}}<br>
+      Problem Solving:{{problemSolving}}<br>
+      Building High-performance teams:{{buildingHighPerformanceTeam}}<br>
+      Stakeholder management:{{stakeHolderManagment}}<br>
+
+    </td>
+    <td *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+      Document discrepancies: Date:{{discrepancy_date | date: 'dd/MM/yyyy'}}/Cause:{{discrepancy_cause}}<br>
+      Compliance: {{Compliance_date | date: 'dd/MM/yyyy'}}/Cause:{{Compliance_cause}}<br>
+      Warning: Date:Date:{{warning_date | date: 'dd/MM/yyyy'}}/Cause:{{warning_cause}}<br>
+      Show cause: Date:{{showCause_date | date: 'dd/MM/yyyy'}}/Cause:{{showCause_cause}}<br>
+      PIP:Date: {{performance_date | date: 'dd/MM/yyyy'}}/Cause:{{performance_cause}}<br>
+      TerminationDate: {{termination_date | date: 'dd/MM/yyyy'}}/Cause:{{termination_cause}}<br>
+
+    </td>
+    <td *ngIf="list.organisationId != '' && list.organisationId != undefined ">
+      <li *ngIf="list.awards.originalFilename">
+        {{list.awards.originalFilename}}
+      </li>
+      <li *ngIf="list.discrepancyDocuments.originalFilename || list.discrepancyDocuments.originalFilename != '' ">
+        {{list.discrepancyDocuments.originalFilename}}
+      </li>
+      <li *ngIf="list.compliencyDiscrepancy.originalFilename && list.compliencyDiscrepancy.originalFilename != '' ">
+        {{list.compliencyDiscrepancy.originalFilename}}
+      </li>
+      <li *ngIf="list.warning.originalFilename || list.warning.originalFilename != '' ">
+        {{list.warning.originalFilename}}
+      </li>
+      <li *ngIf="list.showCausedIssue.originalFilename || list.showCausedIssue.originalFilename != '' ">
+        {{list.showCausedIssue.originalFilename}}
+      </li>
+      <li *ngIf="list.suspension.originalFilename || list.suspension.originalFilename != '' ">
+        {{list.suspension.originalFilename}}
+      </li>
+      <li *ngIf="list.termination.originalFilename || list.termination.originalFilename != '' ">
+        {{list.termination.terminationUploadDocument}}
+      </li>
+    </td>
+  </tr>
+ 
+</table>
+
+<hr>
+<div class="pagebreak"> </div>
+
+<table style="width:95%;margin-left:27px;">
+  <caption style="padding-bottom: 10px;padding-top: 10px;">Educational Details</caption>
+  <tr>
+    <th class="w-16">LOGO</th>
+    <th>INSTITUTE NAME</th>
+    <th>LOCATION</th>
+    <th>COURSE NAME</th>
+    <th>DURATION/YEAR OF PASSING</th>
+    <th>RESULT</th>
+    <th>AWARDS,if any</th>
+    <th>REMARK</th>
+  </tr>
+  <tr *ngFor="let list of data">
+    <td  *ngIf="list.instituteId != '' && list.instituteId != undefined ">
+      <span *ngFor="let list1 of data1"><img class="image" *ngIf="list.instituteId === list1._id" src="{{instLogo + list1.instituteLogo}}"></span>
+    </td>
+    <td *ngIf="list.instituteId != '' && list.instituteId != undefined ">
+      {{list.intitutionName}}
+    </td>
+    <td *ngIf="list.instituteId != '' && list.instituteId != undefined ">
+      {{list.address}}
+    </td>
+    <td *ngIf="list.instituteId != '' && list.instituteId != undefined ">
+      {{list.nameOfCourse}}
+    </td>
+    <td *ngIf="list.instituteId != '' && list.instituteId != undefined ">
+      {{list.yearOfPassout - list.yearOfJoining }} YEARS <br>
+      {{list.yearOfPassout}}
+     </td>
+    <td *ngIf="list.instituteId != '' && list.instituteId != undefined ">
+      
+    </td>
+    <td *ngIf="list.instituteId != '' && list.instituteId != undefined ">
+     
+    </td>
+    <td *ngIf="list.instituteId != '' && list.instituteId != undefined ">
+    
+    </td>
+   
+    
+  </tr>
+ 
+</table>
+
+
+
+</div>
+
+<!-- component -->
+
+
+    

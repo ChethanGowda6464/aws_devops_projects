@@ -1,0 +1,82 @@
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+   #drawer
+   class="sidenav"
+    fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) ? 'true':'false'">
+    <!-- <mat-toolbar>Scandidate</mat-toolbar> -->
+    <mat-icon class="close" (click)="drawer.close()">close</mat-icon>
+    <mat-nav-list *ngIf="appAdmin">
+      <a mat-list-item routerLink="/dashboard"><mat-icon class="space">dvr</mat-icon>Dashboard</a>
+      <a mat-list-item routerLink="/organization-list"><mat-icon class="space">domain</mat-icon>Onboard Organization</a>
+      <a mat-list-item routerLink="/inistution-list"><mat-icon class="space">school</mat-icon>Onboard Institution</a>
+      <a mat-list-item routerLink="/hrPartner-list"><mat-icon class="space">domain</mat-icon> Onboard Agency</a>
+      <a mat-list-item routerLink="/users-list"><mat-icon class="space">people</mat-icon> Onboard User</a>
+      <a mat-list-item routerLink="/students"><mat-icon class="space">group_work</mat-icon>Students List</a>
+      <a mat-list-item routerLink="/employee"><mat-icon class="space">supervised_user_circle</mat-icon>Our Ex-Employees</a>
+      <a mat-list-item routerLink="/BGV"><mat-icon class="space">search</mat-icon>Scandidate Report</a>
+      <a mat-list-item routerLink="/settings"><mat-icon class="space">settings</mat-icon> Settings</a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="insitutionadmin">
+      <a mat-list-item routerLink="/institutionDashboard"><mat-icon class="space">dvr</mat-icon>Dashboard</a>
+      <a mat-list-item routerLink="/insitution-users-list"><mat-icon class="space">casino</mat-icon>Operational User</a>
+      <a mat-list-item routerLink="/student-list"><mat-icon class="space">people</mat-icon>Student List</a>
+      <a mat-list-item routerLink="/BGV"><mat-icon class="space">search</mat-icon>Scandidate Report</a>
+      <a mat-list-item routerLink="/settings"><mat-icon class="space">settings</mat-icon> Settings</a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="organizationadmin">
+      <a mat-list-item routerLink="/organizationDashboard"><mat-icon class="space">dvr</mat-icon>Dashboard</a>
+      <a mat-list-item routerLink="/orgnization-users-list"><mat-icon class="space">casino</mat-icon>Operational User</a>
+      <a mat-list-item routerLink="/candidate-list"><mat-icon class="space">people</mat-icon>Our Ex-Employees</a>
+      <a mat-list-item routerLink="/BGV"><mat-icon class="space">search</mat-icon>Scandidate Report</a>
+      <a mat-list-item routerLink="/settings"><mat-icon class="space">settings</mat-icon> Settings</a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="hrpartneradmin">
+      <a mat-list-item routerLink="/hrpartnerdashboard"><mat-icon class="space">dvr</mat-icon>Dashboard</a>
+      <a mat-list-item routerLink="/user-list"><mat-icon class="space">casino</mat-icon>Operational User</a>
+      <a mat-list-item routerLink="/employee-list"><mat-icon class="space">people</mat-icon>Our Ex-Employees</a>
+      <a mat-list-item routerLink="/hrcandidate-list"><mat-icon class="space">people</mat-icon>Candidate</a>
+      <a mat-list-item routerLink="/BGV"><mat-icon class="space">search</mat-icon>Scandidate Report</a>
+      <a mat-list-item routerLink="/settings"><mat-icon class="space">settings</mat-icon> Settings</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content >
+    <mat-toolbar color="primary" class="br-about">
+      <button class="toggleBtn"
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <!-- <span>Scandidate</span> -->
+      <!-- <img  src="../../../assets/images/logo1.png" width="50" height="50" alt="" class="pl-2"  *ngIf="adminLogo">
+      <img  src={{imageUrl}} width="50" height="50" alt="" class="pl-2"  *ngIf="Logo"> -->
+      <span class="spacer"></span>
+        <!-- <mat-icon matBadge="30" class="lg:ml-7 flex items-center justify-start lg:mb-0 mb-0 cursor-pointer">
+          notifications
+ </mat-icon> -->
+      <!-- <mat-icon class="lg:ml-4 h-15 w-15 flex items-center justify-start lg:mb-0 mb-4 cursor-pointer">account_circle</mat-icon> -->
+{{institueName}}
+<!-- {{organizationName}} -->
+      <img  src="../../../assets/images/logo1.png" width="50" height="50" alt="" class="pl-2 ml-4" *ngIf="adminLogo">
+      <img  src={{institutionLogo}} width="50" height="50" alt="" class="pl-2 ml-4" *ngIf="Logo">
+    
+      <a routerLink="/user-profile" class="lg:ml-4 flex items-center justify-start lg:md-0 mb-0 cursor-pointer" *ngIf="profileImg">
+        <img src={{imageUrl}} class="rounded-full w-8 h-8 border-2 border-transparent hover:border-indigo-400" >
+      </a>
+      <mat-icon class="arrow-down cursor-pointer" [matMenuTriggerFor]="afterMenu">keyboard_arrow_down</mat-icon>
+      <mat-menu #afterMenu="matMenu">
+        <!-- <span mat-menu-item class="block px-4 py-2 text-gray-800 hover:text-green-700"><mat-icon>restore</mat-icon>Reset password</span> -->
+        <a routerLink="/landing-page"> <span mat-menu-item class="block px-4 py-2 text-gray-800 hover:text-green-700" (click)="logout()"><mat-icon>exit_to_app</mat-icon>Logout</span></a>
+        <a routerLink="/reset-password"> <span mat-menu-item class="block px-4 py-2 text-gray-800 hover:text-green-700" ><mat-icon>settings</mat-icon>Reset Password</span></a>
+      </mat-menu>
+      
+    </mat-toolbar>
+    <ng-content></ng-content>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

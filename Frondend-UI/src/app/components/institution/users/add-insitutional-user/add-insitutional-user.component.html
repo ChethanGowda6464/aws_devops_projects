@@ -1,0 +1,77 @@
+<app-navbar>
+<div class="pt-16 lg:pl-64 pl-12 md:pl-48 bg-white">
+        <h1 class="hd-add pb-6">Operational User Form</h1>
+        <form class="w-full max-w-lg" [formGroup]="createUser">
+          <div class="flex flex-wrap">
+            <div class="w-full md:w-1/2 sm:w-full">
+              <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input  matInput formControlName="firstName"  type="text"  required  class="br-btm input-w" autoComplete='off' tabindex="1">
+                <mat-error *ngIf ="createUser.get('firstName').errors?.required">
+                    Required first Name.
+                   </mat-error>
+                   <mat-error *ngIf ="createUser.get('firstName').errors?.minlength">
+                     First name must be at least 3 characters long.
+                    </mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input  matInput formControlName="lastName"  type="text"  required  class="br-btm input-w" autoComplete='off' tabindex="2">
+                <mat-error *ngIf ="createUser.get('lastName').errors?.required">
+                    Required Last Name.
+                   </mat-error>
+                   <mat-error *ngIf ="createUser.get('lastName').errors?.minlength">
+                     Last name must be at least 3 characters long.
+                    </mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Role</mat-label>
+                <input  matInput formControlName="role"  type="text"  required readonly class="br-btm input-w" autoComplete='off' tabindex="3">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Sub Role</mat-label>
+                <input  matInput formControlName="subRole"  type="text"  required readonly class="br-btm input-w" autoComplete='off' tabindex="4">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input  matInput formControlName="email"  type="text"  required  class="br-btm input-w" autoComplete='off' tabindex="5">
+                <mat-error *ngIf ="createUser.get('email').errors?.required">
+                  Required email address
+                </mat-error>
+                <mat-error *ngIf ="createUser.get('email').errors?.email">
+                  Enter a valid email address
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Phone Number</mat-label>
+                <input  matInput formControlName="phoneNumber"  type="text"  required  class="br-btm input-w" autoComplete='off' pattern="^[0-9]{10}$" tabindex="6">
+                <mat-error *ngIf ="createUser.get('phoneNumber').errors?.required">
+                  Required phone number.
+              </mat-error>
+              <mat-error *ngIf="!createUser.get('phoneNumber').errors?.required && createUser.get('phoneNumber').errors?.pattern">
+                  Please enter valid mumber
+              </mat-error>
+              </mat-form-field>
+              <mat-form-field *ngIf ="id">
+                <mat-label>Status</mat-label>
+                <mat-select class="br-btm input-w" formControlName="status">
+                  <mat-option  [value]= "true">Active</mat-option>
+                  <mat-option  [value]= "false">Inactive</mat-option>
+                </mat-select>
+            </mat-form-field>
+            </div>
+          </div>
+          <div class="flex justify-end lg:pb-6 lg:pr-48">
+            <a routerLink="/insitution-users-list"><button class="lg-button focus:outline-none focus:shadow-outline mr-12" type="button">
+              Cancel
+            </button></a>
+            <button class="lg-button focus:outline-none focus:shadow-outline" type="submit" (click)="onSubmit()" *ngIf= "!id" tabindex="7">
+              Submit
+            </button>
+            <button class="lg-button focus:outline-none focus:shadow-outline"  (click)="onupdate(id)" *ngIf = "id" tabindex="7">
+              Update
+            </button>
+        </div>
+      </form>
+</div>
+</app-navbar>
